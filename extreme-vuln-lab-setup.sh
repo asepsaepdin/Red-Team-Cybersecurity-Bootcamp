@@ -189,7 +189,7 @@ gdown https://drive.google.com/uc?id=1x6lmF1CtADMkHTtDZ5COaHknHHbhxPjg --quiet
 tar -xzvf wordpress_backup2.tar.gz -C /var/www/html/ > /dev/null 2>&1
 mysql -u root -pR@v3nSecurity -e "CREATE DATABASE IF NOT EXISTS wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost'; FLUSH PRIVILEGES;" 
 mysql -u root -pR@v3nSecurity wordpress < wordpress_database2.sql
-mysql -u root -pR@v3nSecurity -e "use wordpress; update wp_users set user_pass = MD5('Pa$$w0rd!') where ID = 1;
+mysql -u root -pR@v3nSecurity -e "use wordpress; update wp_users set user_pass = MD5('Pa$$w0rd!') where ID = 1;"
 print_success "Database & Attack Surfaces Configured."
 print_divider
 
