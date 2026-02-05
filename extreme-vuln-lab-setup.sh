@@ -99,6 +99,7 @@ while kill -0 $pid 2>/dev/null; do
     done
 done
 
+echo ""
 print_success "Infrastructure Installed Successfully."
 print_divider
 
@@ -184,12 +185,9 @@ chown -R www-data:www-data /var/www/html/DVWA
 echo -e "    ${CYAN}➤${NC} ${WHITE}Configuring Raven-Security Wordpress${NC}"
 
 # WordPress / Raven-Security
-gdown https://drive.google.com/uc?id=1DHeaGTh6tWmRjpzMFqwr7DkbsFxp9fY2 --quiet
-gdown https://drive.google.com/uc?id=1x6lmF1CtADMkHTtDZ5COaHknHHbhxPjg --quiet
-tar -xzvf wordpress_backup2.tar.gz -C /var/www/html/ > /dev/null 2>&1
+tar -xzvf wordpress_backup.tar.gz -C /var/www/html/ > /dev/null 2>&1
 mysql -u root -pR@v3nSecurity -e "CREATE DATABASE IF NOT EXISTS wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost'; FLUSH PRIVILEGES;" 
-mysql -u root -pR@v3nSecurity wordpress < wordpress_database2.sql
-mysql -u root -pR@v3nSecurity -e "use wordpress; update wp_users set user_pass = MD5('Pa$$w0rd!') where ID = 1;"
+mysql -u root -pR@v3nSecurity wordpress < wordpress_database.sql
 print_success "Database & Attack Surfaces Configured."
 print_divider
 
