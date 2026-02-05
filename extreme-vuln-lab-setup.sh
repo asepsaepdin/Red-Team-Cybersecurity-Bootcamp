@@ -188,6 +188,11 @@ echo -e "    ${CYAN}➤${NC} ${WHITE}Configuring Raven-Security Wordpress${NC}"
 cat wordpress_backup.tar.gz.part* | tar -xzv -C /var/www/html/ > /dev/null 2>&1
 mysql -u root -pR@v3nSecurity -e "CREATE DATABASE IF NOT EXISTS wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost'; FLUSH PRIVILEGES;" 
 mysql -u root -pR@v3nSecurity wordpress < wordpress_database.sql
+cd /tmp && {
+    wget -q https://downloads.wordpress.org/plugin/wpdiscuz.7.0.0.zip -O wpdiscuz.zip
+    unzip -q wpdiscuz.zip
+    sudo cp -r wpdiscuz "/var/www/html/wordpress/wp-content/plugins/"
+}
 print_success "Database & Attack Surfaces Configured."
 print_divider
 
