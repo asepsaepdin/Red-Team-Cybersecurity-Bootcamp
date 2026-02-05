@@ -185,7 +185,7 @@ chown -R www-data:www-data /var/www/html/DVWA
 echo -e "    ${CYAN}➤${NC} ${WHITE}Configuring Raven-Security Wordpress${NC}"
 
 # WordPress / Raven-Security
-tar -xzvf wordpress_backup.tar.gz -C /var/www/html/ > /dev/null 2>&1
+cat wordpress_backup.tar.gz.part* | tar -xzv -C /var/www/html/ > /dev/null 2>&1
 mysql -u root -pR@v3nSecurity -e "CREATE DATABASE IF NOT EXISTS wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost'; FLUSH PRIVILEGES;" 
 mysql -u root -pR@v3nSecurity wordpress < wordpress_database.sql
 print_success "Database & Attack Surfaces Configured."
