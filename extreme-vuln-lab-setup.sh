@@ -225,9 +225,9 @@ print_step "6/6: Creating Weak Identities"
 
 echo -e "    ${CYAN}➤${NC} ${WHITE}Creating Vulnerable User${NC}"
 
-useradd -m -s /bin/bash -p "$(openssl passwd -1 password123)" web_admin  > /dev/null 2>&1 
-echo "web_admin ALL=(ALL) NOPASSWD: /usr/bin/apt, /usr/bin/python3" >> /etc/sudoers
-print_success "User 'web_admin' created."
+useradd -m -s /bin/bash -p "$(openssl passwd -1 password123)" webadmin  > /dev/null 2>&1 
+echo "webadmin ALL=(ALL) NOPASSWD: /usr/bin/apt, /usr/bin/python3" >> /etc/sudoers
+print_success "User 'webadmin' created."
 print_divider
 
 # --- Final Summary ---
