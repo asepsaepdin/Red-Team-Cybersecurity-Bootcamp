@@ -193,6 +193,15 @@ cd /tmp && {
     unzip -q wpdiscuz.zip
     sudo cp -r wpdiscuz "/var/www/html/wordpress/wp-content/plugins/"
 }
+
+echo -e "    ${CYAN}➤${NC} ${WHITE}Configuring PC Parts Store Lab${NC}"
+
+# PC Parts Store
+git clone https://github.com/asepsaepdin/pc-parts-store-lab.git /var/www/html/pc-parts-store > /dev/null 2>&1
+mysql -u root -pR@v3nSecurity -e "CREATE DATABASE IF NOT EXISTS pc_part_store; GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost'; FLUSH PRIVILEGES;" 
+mysql -u root -pR@v3nSecurity pc_part_store < /var/www/html/pc-parts-store/pc_part_store.sql
+sed -i "s/define('DB_PASS', '');/define('DB_PASS', 'R@v3nSecurity');/" /var/www/html/pc-parts-store/includes/db.php
+chown -R www-data:www-data /var/www/html/
 print_success "Database & Attack Surfaces Configured."
 print_divider
 
