@@ -81,7 +81,7 @@ echo -e "    ${CYAN}➤${NC} ${WHITE}Installing: Apache, MariaDB, Samba, Docker.
         openssh-server apache2 libapache2-mod-php php php-mysql php-curl php-gd \
         php-mbstring php-xml php-zip php-intl php-soap php-imagick mariadb-server \
         samba nfs-kernel-server inetutils-telnetd git build-essential vsftpd curl \
-        net-tools tcpdump docker.io libcap2-bin python3-pip > /dev/null 2>&1
+        net-tools zip tcpdump docker.io libcap2-bin python3-pip > /dev/null 2>&1
     pip3 install gdown --break-system-packages --quiet > /dev/null 2>&1
 ) & 
 
